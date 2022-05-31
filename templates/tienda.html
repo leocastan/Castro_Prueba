@@ -40,7 +40,7 @@
 
         <br>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <input type="submit" value="Registrar1" class="btn btn-primary">
+            <input type="submit" value="Registrar" class="btn btn-primary">
         </div>
 
 
@@ -61,17 +61,16 @@
         </thead>
 
         <tbody>
-
             <tr>
-                {% for tarea in registro %}
+                {% for tarea1 in registro1 %}
                 <!--Mostrar el nombre-->
-                <th>{{tarea.nombre}}</th>
+                <th>{{tarea1.nombre}}</th>
                 <!--Mostrar el telefono-->
-                <th>{{tarea.telefono}}</th>
+                <th>{{tarea1.telefono}}</th>
                 <!--Mostrar el estado-->
-                <th>{{tarea.estado}}</th>
+                <th>{{tarea1.estado}}</th>
                 <!--Mostrar el nombre gerente-->
-                <th>{{tarea.gerente}}</th>
+                <th>{{tarea1.gerente}}</th>
             </tr>
             {% endfor %}
         </tbody>

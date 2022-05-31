@@ -12,33 +12,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-    <title>Registro</title>
+    <title>Admin</title>
 
 </head>
 
 <body>
-    <h1>Formulario de Registro</h1>
+    <h1>Admin</h1>
 
     <!--Formulario para el ingreso de nuevas tareas tomado de Bootstrap-->
-    <form method="post" action="{{url_for('enviar')}}">
+    <form method="post" action="{{url_for('enviar1')}}">
         <div class="form-group">
             <label>Nombre</label>
             <input type="text" class="form-control" placeholder="Ingrese el nombre" name="nombre">
         </div>
         <div class="form-group">
             <label>Telefono</label>
-            <input type="text" class="form-control"
-                placeholder="Ingrese el telefono" name="telefono">
+            <input type="text" class="form-control" placeholder="Ingrese el telefono" name="telefono">
         </div>
         <div class="form-group">
             <label>Estado</label>
-            <input type="text" class="form-control"
-                placeholder="Ingrese el estado" name="estado">
+            <input type="text" class="form-control" placeholder="Ingrese el estado" name="estado">
         </div>
-         <br>
+        <div class="form-group">
+            <label>Gerente</label>
+            <input type="text" class="form-control" placeholder="Ingrese el nombre del gerente" name="gerente">
+        </div>
+
+        <br>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <input type="submit" value="Registrar" class="btn btn-primary">
+            <input type="submit" value="Registrar1" class="btn btn-primary">
         </div>
+
+
     </form><br>
 
     <h1>Registro</h1>
@@ -50,6 +55,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Telefono</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Gerente</th>
             </tr>
 
         </thead>
@@ -58,20 +64,18 @@
 
             <tr>
                 {% for tarea in registro %}
-                <!--Mostrar la descripción de la tarea-->
+                <!--Mostrar el nombre-->
                 <th>{{tarea.nombre}}</th>
-                <!--Mostrar correo electrónico del responsable-->
+                <!--Mostrar el telefono-->
                 <th>{{tarea.telefono}}</th>
-                <!--Mostrar la prioridad de la tarea-->
+                <!--Mostrar el estado-->
                 <th>{{tarea.estado}}</th>
+                <!--Mostrar el nombre gerente-->
+                <th>{{tarea.gerente}}</th>
             </tr>
             {% endfor %}
         </tbody>
-
     </table>
-
-
-
-
 </body>
+
 </html>

@@ -55,7 +55,7 @@ registro1 = []
 @app.route('/tienda')
 # Lamar a principal
 def tienda():
-    return render_template('tienda.html')
+    return render_template('tienda.html',registro1=registro1)
 
 # 2. Funcion controlador para agregar el registro
 # Definicion de la ruta
@@ -68,7 +68,7 @@ def enviar1():
         nombre = request.form['nombre']
         telefono = request.form['telefono']
         estado = request.form['estado']
-        gerente = request.form['estado']
+        gerente = request.form['gerente']
 
         # Funcion condicional para no registrar en caso de datos vacios
         if nombre == '' or telefono == '' or estado == '' or gerente == '':
@@ -81,7 +81,7 @@ def enviar1():
             resultado1 = messagebox.askquestion("Registrar", "¿Está seguro que desea registrar los datos?")
             #Funcion condicional de confirmacion de registro
             if resultado1 == "yes":
-                registro.append({'nombre': nombre, 'telefono': telefono, 'estado': estado, 'gerente': gerente })
+                registro1.append({'nombre': nombre, 'telefono': telefono, 'estado': estado, 'gerente': gerente })
                 return redirect(url_for('tienda'))
             else:
                 return redirect(url_for('tienda'))
