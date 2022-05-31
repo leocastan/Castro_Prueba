@@ -47,6 +47,43 @@ def enviar():
                 return redirect(url_for('home'))
 
 
+# Arreglo para almacenar datos tienda
+registro3 = []
+
+# 1. Funcion controlador que muestra el registro de un cliente
+# Definicion de la ruta por defecto,
+@app.route('/clientetienda')
+# Lamar a principal
+def clientetienda():
+    return render_template('cleintetienda.html', registro3=registro3)
+
+# 2. Funcion controlador para agregar el registro
+# Definicion de la ruta
+@app.route('/clientetienda', methods=['POST'])
+# Llamar a enviar
+def enviar3():
+    # Funcion condicional para enviar los datos del formulario
+    if request.method == 'POST':
+
+        nombre = request.form['nombre']
+        telefono = request.form['telefono']
+
+        # Funcion condicional para no registrar en caso de datos vacios
+        if nombre == '' or telefono == '':
+            #Mensaje de alerta de campos faltantes
+            messagebox.showwarning("¡Alerta!","Ingrese todos los campos")
+            return redirect(url_for('clientetienda'))
+
+        else:
+            #Mensaje de autorizacion de registro
+            resultado = messagebox.askquestion("Registrar", "¿Está seguro que desea registrar los datos?")
+            #Funcion condicional de confirmacion de registro
+            if resultado == "yes":
+                registro.append({'nombre': nombre, 'telefono': telefono })
+                return redirect(url_for('clientetienda'))
+            else:
+                return redirect(url_for('clientetienda'))
+
 ##################### TIENDA #####################
 # Arreglo para almacenar datos
 registro1 = []
