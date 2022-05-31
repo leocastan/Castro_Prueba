@@ -86,7 +86,44 @@ def enviar1():
             else:
                 return redirect(url_for('tienda'))
 
+##################### ADMIN #####################
+# Arreglo para almacenar datos
+registro2= []
+# 1. Funcion controlador que muestra al admin
+# Definicion de la ruta por defecto,
+@app.route('/admin')
+# Lamar a principal
+def admin():
+    return render_template('admin.html',registro2=registro2)
 
+# 2. Funcion controlador para agregar el registro
+# Definicion de la ruta
+@app.route('/enviar2', methods=['POST'])
+# Llamar a enviar
+def enviar2():
+    # Funcion condicional para enviar los datos del formulario
+    if request.method == 'POST':
+
+        nombre = request.form['nombre']
+        telefono = request.form['telefono']
+        estado = request.form['estado']
+        gerente = request.form['gerente']
+
+        # Funcion condicional para no registrar en caso de datos vacios
+        if nombre == '' or telefono == '' or estado == '' or gerente == '':
+            #Mensaje de alerta de campos faltantes
+            messagebox.showwarning("¡Alerta!","Ingrese todos los campos")
+            return redirect(url_for('tienda'))
+
+        else:
+            #Mensaje de autorizacion de registro
+            resultado1 = messagebox.askquestion("Registrar", "¿Está seguro que desea registrar los datos?")
+            #Funcion condicional de confirmacion de registro
+            if resultado1 == "yes":
+                registro1.append({'nombre': nombre, 'telefono': telefono, 'estado': estado, 'gerente': gerente })
+                return redirect(url_for('tienda'))
+            else:
+                return redirect(url_for('tienda'))
 
 
 
